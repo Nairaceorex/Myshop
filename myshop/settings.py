@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import braintree
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -130,13 +129,15 @@ CART_SESSION_ID = 'cart'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Braintree settings
-BRAINTREE_MERCHANT = 'wzk3wkqv4p3hsqht'
+BRAINTREE_MERCHANT_ID = 'wzk3wkqv4p3hsqht'
 BRAINTREE_PUBLIC_KEY = 'cgs6q7gfr5kc7d8y'
 BRAINTREE_PRIVATE_KEY = 'a4686161ef0f3634b6c90f38cde276e6'
 
+import braintree
+
 BRAINTREE_CONF = braintree.Configuration(
     braintree.Environment.Sandbox,
-    BRAINTREE_MERCHANT,
+    BRAINTREE_MERCHANT_ID,
     BRAINTREE_PUBLIC_KEY,
-    BRAINTREE_PRIVATE_KEY
+    BRAINTREE_PRIVATE_KEY,
 )
